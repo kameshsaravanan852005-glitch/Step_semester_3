@@ -1,0 +1,37 @@
+public class q5{
+
+    public static void classifyWordLengths(String review) {
+        // Split text by spaces and remove punctuation marks
+        String[] words = review.replaceAll("[^a-zA-Z ]", "").split("\\s+");
+        
+        int shortCount = 0;
+        int mediumCount = 0;
+        int longCount = 0;
+
+        for (String word : words) {
+            if (word.isEmpty()) {
+                continue;
+            }
+            
+            int length = word.length();
+            
+            if (length >= 1 && length <= 4) {
+                shortCount++;
+            } else if (length >= 5 && length <= 8) {
+                mediumCount++;
+            } else if (length >= 9) {
+                longCount++;
+            }
+        }
+
+        // Print output matching the required format
+        System.out.println("Short: " + shortCount + " | Medium: " + mediumCount + " | Long: " + longCount);
+    }
+
+    public static void main(String[] args) {
+        // Test with the sample input from the image
+        String review = "This movie was absolutely fantastic and thrilling";
+        
+        classifyWordLengths(review);
+    }
+}
