@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.*;
 
 public class  q1{
 
