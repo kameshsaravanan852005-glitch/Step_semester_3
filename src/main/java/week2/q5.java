@@ -13,8 +13,6 @@ public class BankTransactionReference {
     }
 
     public static String validateAndFormat(String reference) {
-
-        // Check length
         if (reference.length() != 14) {
             return "Invalid: reference must be exactly 14 characters";
         }
@@ -26,14 +24,13 @@ public class BankTransactionReference {
             }
         }
 
-        // Check remaining 11 characters are digits
+       
         for (int i = 3; i < 14; i++) {
             if (!Character.isDigit(reference.charAt(i))) {
                 return "Invalid: remaining characters must be digits";
             }
         }
 
-        // Extract parts
         String bankCode = reference.substring(0, 3);
         String date = reference.substring(3, 9);
         String sequence = reference.substring(9, 14);
