@@ -1,0 +1,53 @@
+package main.java.week11hw;
+
+import java.util.Arrays;
+
+public class q5 {
+
+    static int[] diceSort(int[] rolls) {
+
+        int[] count = new int[7];
+
+        // Count occurrences of each dice number
+        for (int i = 0; i < rolls.length; i++) {
+            count[rolls[i]]++;
+        }
+
+        // Print counts
+        System.out.print("Counts: ");
+        for (int i = 1; i <= 6; i++) {
+            System.out.print(i + ":" + count[i] + " ");
+        }
+
+        System.out.println();
+
+        // Build sorted array
+        int[] result = new int[rolls.length];
+        int index = 0;
+
+        for (int i = 1; i <= 6; i++) {
+            for (int j = 0; j < count[i]; j++) {
+                result[index] = i;
+                index++;
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+
+        int[] rolls = {4, 1, 6, 4, 2, 1, 4};
+
+        int[] result = diceSort(rolls);
+
+        System.out.println("Sorted: " + Arrays.toString(result));
+
+        // Own test case
+        int[] ownRolls = {6, 3, 2, 6, 1, 3};
+
+        int[] ownResult = diceSort(ownRolls);
+
+        System.out.println("Sorted: " + Arrays.toString(ownResult));
+    }
+}
